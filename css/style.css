@@ -7,42 +7,20 @@
     position: relative;
     border-radius: 12px;
     height: 100%;
-    padding-bottom: 50px;
     
 }
 
 .promo-card {
-    position: relative;
-    border-radius: 25px 25px 25px 0;
-    background-color: #fdebdb;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     height: 100%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    position: relative;
+    background-color: #fdebdb;
 }
 
-.promo-extension {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: calc(100% - 30px); /* Оставляем место для стрелки */
-    height: 50px; /* Высота прямоугольника */
-    background-color: #fdebdb; /* Цвет карточки */
-    border-radius: 0 0 100px 25px; /* Скругляем нижние углы */
-    z-index: 1;
-}
-
-.promo-extension::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 30px;
-    height: 50px;
-    background: white;
-    border-top-left-radius: 65%;
-    z-index: 2; 
-}
 
 .promo-image {
     height: 230px;
@@ -57,8 +35,8 @@
     position: absolute;
     bottom: 5px;
     right: 5px;
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     background-color: var(--orange);
     border-radius: 50%;
     display: flex;
@@ -66,7 +44,6 @@
     justify-content: center;
     z-index: 2;
 }
-
 
 .promo-header {
     color: #000;
@@ -84,8 +61,7 @@
     flex-direction: column;
     min-height: 100px;
     border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
-    
+    border-bottom-right-radius: 16px;   
 }
 
 .promo-title {
@@ -166,12 +142,7 @@
 /* Адаптация для мобильных */
 @media (max-width: 767.98px) {
     .promo-card {
-        border-radius: 25px 25px 25px 0;
-    }
-    .promo-card-corner {
-        width: 40px;
-        height: 40px;
-        border-radius: 0 0 12px 0;
+        border-radius: 25px;
     }
     .promo-image {
         height: 180px;

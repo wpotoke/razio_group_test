@@ -5,26 +5,43 @@
 
 .promo-card-container {
     position: relative;
+    border-radius: 12px;
     height: 100%;
+    padding-bottom: 50px;
+    
 }
 
 .promo-card {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    border-radius: 25px 25px 25px 0;
+    background-color: #fdebdb;
     height: 100%;
     display: flex;
     flex-direction: column;
-    position: relative;
-    background-color: #fdebdb;
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        100% calc(100% - 45px),
-        calc(100% - 45px) calc(100% - 45px),
-        calc(100% - 45px) 100%,
-        0 100%
-    );
+    overflow: hidden;
+}
+
+.promo-extension {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 30px); /* Оставляем место для стрелки */
+    height: 50px; /* Высота прямоугольника */
+    background-color: #fdebdb; /* Цвет карточки */
+    border-radius: 0 0 100px 25px; /* Скругляем нижние углы */
+    z-index: 1;
+}
+
+.promo-extension::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 50px;
+    background: white;
+    border-top-left-radius: 65%;
+    z-index: 2; 
 }
 
 .promo-image {
@@ -33,7 +50,7 @@
     position: relative;
     overflow: hidden;
     margin: 23px;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .promo-arrow {
@@ -50,6 +67,7 @@
     z-index: 2;
 }
 
+
 .promo-header {
     color: #000;
     font-size: 2rem;
@@ -65,6 +83,9 @@
     display: flex;
     flex-direction: column;
     min-height: 100px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    
 }
 
 .promo-title {
@@ -97,127 +118,81 @@
 
 .img-fluid {
     object-fit: cover;
+    border-radius: 12px;
 }
 
+/* Десктоп (≥1200px) - 4 карточки */
+@media (min-width: 1200px) {
+    .promo-col {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .promo-col:nth-child(n+5) {
+        display: none;
+    }
+}
 
-/* Адаптация для разных устройств */
-@media (max-width: 767.98px) and (orientation: portrait) {
-    /* Вертикальный мобильный (портрет) — 3 карточки в ряд */
+/* Планшет (992-1199px) - 6 карточек */
+@media (min-width: 992px) and (max-width: 1199.98px) {
     .promo-col {
         flex: 0 0 33.333333%;
         max-width: 33.333333%;
-        padding: 0 5px;
-    }
-    
-    /* Оптимизация отступов и размеров */
-    .promo-image {
-        margin: 10px;
-        height: 160px;
-    }
-    
-    .promo-body {
-        padding: 10px 12px 15px;
-    }
-    
-    .promo-title {
-        font-size: 1rem;
     }
 }
 
-
-@media (max-width: 767.98px) and (orientation: portrait) {
-    /* Общие стили для 3 карточек в ряд */
-    .promo-col {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-        padding: 0 4px; /* Уменьшаем отступы между карточками */
-    }
-
-    /* Упрощаем карточку для мобилок */
-    .promo-card {
-        clip-path: polygon(
-        0 0,
-        100% 0,
-        100% calc(100% - 35px),
-        calc(100% - 35px) calc(100% - 35px),
-        calc(100% - 35px) 100%,
-        0 100%
-    );
-        border-radius: 8px; /* Делаем скругление поменьше */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Меньшая тень */
-    }
-
-    /* Уменьшаем изображение */
-    .promo-image {
-        height: 110px; /* Было 230px, теперь компактнее */
-        margin: 9px; /* Уменьшаем отступы внутри карточки */
-    }
-
-    /* Делаем текст меньше */
-    .promo-body {
-        padding: 8px 10px 12px; /* Меньше внутренних отступов */
-    }
-
-    .promo-title {
-        font-size: 0.9rem; /* Уменьшаем заголовок */
-        margin-bottom: 3px; /* Меньше отступ */
-    }
-
-    .promo-text {
-        font-size: 0.75rem; /* Меньший текст */
-        padding-right: 0; /* Убираем лишний отступ */
-        margin-bottom: 8px;
-    }
-
-    /* Кнопку делаем компактнее */
-    .all-promos-btn {
-        padding: 5px 12px;
-        font-size: 0.7rem;
-    }
-
-    /* Стрелочку в углу делаем меньше */
-    .promo-arrow {
-        width: 25px;
-        height: 25px;
-        bottom: 3px;
-        right: 3px;
-    }
-}
-
-
-/* Горизонтальный мобильный (ландшафт) - 2 по 2 */
+/* Горизонтальный мобильный (ландшафт) - 4 карточки */
 @media (max-width: 991.98px) and (orientation: landscape),
        (max-width: 991.98px) and (max-height: 600px) {
     .promo-col {
         flex: 0 0 50%;
         max-width: 50%;
     }
-    
+    .promo-col:nth-child(n+5) {
+        display: none;
+    }
+}
+
+/* Вертикальный мобильный (портрет) - 3 карточки */
+@media (max-width: 767.98px) and (orientation: portrait) {
+    .promo-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .promo-col:nth-child(n+4) {
+        display: none;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 767.98px) {
+    .promo-card {
+        border-radius: 25px 25px 25px 0;
+    }
+    .promo-card-corner {
+        width: 40px;
+        height: 40px;
+        border-radius: 0 0 12px 0;
+    }
     .promo-image {
-        height: 200px;
+        height: 180px;
+        margin: 15px;
+        border-radius: 8px;
     }
-}
-
-/* Планшет (3 колонки) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .promo-col {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
+    .promo-body {
+        padding: 12px 15px 20px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
     }
-}
-
-/* Большие планшеты и маленькие десктопы (992-1199px) - 3 колонки */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .promo-col {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
+    .promo-title {
+        font-size: 1.1rem;
     }
-}
-
-/* Десктоп (4 колонки) */
-@media (min-width: 1200px) {
-    .promo-col {
-        flex: 0 0 25%;
-        max-width: 25%;
+    .promo-text {
+        font-size: 0.9rem;
+        padding-right: 30px;
+    }
+    .promo-arrow {
+        width: 30px;
+        height: 30px;
+        border-radius: 100px;
     }
 }
